@@ -22,8 +22,11 @@ def create_app(db_url=None):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
 
-
     api = Api(app)
+
+    #@app._got_first_request
+    #def create_tables():
+    #    db.create_all()
 
     with app.app_context():
         db.create_all()
